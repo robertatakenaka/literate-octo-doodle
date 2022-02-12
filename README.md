@@ -1,5 +1,8 @@
 # literate-octo-doodle
 
+Utilitary to extract data from CouchDB database, only fields at the top level.
+
+
 ## Installation
 
 ### Download the source code
@@ -42,11 +45,82 @@ python setup.py install
 ```
 
 
-## Configuration
+## Optional Configuration
 
-Set the environment variables SERVER (CouchDB location) and DATABASE (Database name)
+By default, it extracts:
+
+for books:
+
+* _id
+* title
+* is_comercial
+* isbn
+* eisbn
+* doi_number
+* use_licence
+* publisher
+* language
+
+For a different set of attributes, configure the environment variable `BOOK_FIELDS`:
+
+*WINDOWS*
+
+```console
+
+SET BOOK_FIELDS="_id,title,is_comercial,isbn,eisbn,doi_number,use_licence,publisher,language"
+```
+
+*LINUX*
+
+```console
+
+export BOOK_FIELDS="_id,title,is_comercial,isbn,eisbn,doi_number,use_licence,publisher,language"
+```
+
+for chapters:
+
+* _id
+* monograph_title
+* title
+* order
+* monograph
+* descriptive_information
+
+For a different set of attributes, configure the environment variable `CHAPTER_FIELDS`:
+
+*WINDOWS*
+
+```console
+
+SET CHAPTER_FIELDS="_id,monograph_title,title,order,monograph,descriptive_information"
+```
+
+*LINUX*
+
+```console
+
+export CHAPTER_FIELDS="_id,monograph_title,title,order,monograph,descriptive_information"
+```
+
+
+## Mandatory Configuration
+
+Set the environment variables:
+
+* SERVER (CouchDB location)
+* DATABASE (Database name)
+
 
 **Example**
+
+*Windows*
+
+```console
+set SERVER="http://couchdb.domain.org:5984"
+set DATABASE=database_name
+```
+
+*Linux*
 
 ```console
 export SERVER="http://couchdb.domain.org:5984"
